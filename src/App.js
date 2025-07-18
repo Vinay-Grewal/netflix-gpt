@@ -1,9 +1,11 @@
+import Body from "./components/Body";
 
 function App() {
   return (
-    <div className='bg-gradient-to-r from-slate-600 to-white'>
-      This is react.
+    <div>
+      <Body/>
     </div>
+    
   );
 }
 
