@@ -4,12 +4,12 @@ import Header from "./Header";
 import { checkValidData } from "../utils/validate";
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword ,updateProfile} from "firebase/auth";
 import {auth} from "../utils/firebase"
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from '../utils/userSlice';
 
 const Login = () => {
-  const navigate=useNavigate();
+  
+
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errMessage,setErrMessage]=useState(null);
   const dispatch=useDispatch();
@@ -27,57 +27,42 @@ const Login = () => {
     //sign In SignUp logic
     if(!isSignInForm){
         createUserWithEmailAndPassword(auth,email.current.value,password.current.value)
-  .then((userCredential) => {
-    // Signed up 
-    const user = userCredential.user;
+        .then((userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
 
-
-
-    updateProfile(user, {
-  displayName:name.current?.value, photoURL: USER_PROFILE_PHOTO
-}).then(() => {
-        const uid = user.uid;
-        const email=user.email;
-        const displayName=user.displayName;
-        const photoURL=USER_PROFILE_PHOTO;
-        dispatch(addUser({uid,email,displayName,photoURL}));
-    navigate("/browse");
-}).catch((error) => {
-    setErrMessage(error.message);
-});
-
-
-
-    
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    setErrMessage(errorCode+"--"+errorMessage);
-    // ..
-  });
-
-    }
+          updateProfile(user, {
+            displayName:name.current?.value, photoURL: USER_PROFILE_PHOTO
+          }).then(() => {
+            const uid = user.uid;
+            const email=user.email;
+            const displayName=user.displayName;
+            const photoURL=USER_PROFILE_PHOTO;
+            dispatch(addUser({uid,email,displayName,photoURL}));
+            
+          }).catch((error) => {
+            setErrMessage(error.message);
+          }); 
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrMessage(errorCode+"--"+errorMessage);
+        });
+      }
     else{
         signInWithEmailAndPassword(auth, email.current.value,password.current.value)
-  .then((userCredential) => {
+      .then((userCredential) => {
     // Signed in 
-    const user = userCredential.user;
-    console.log(user);
-    navigate("/browse");
-
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    setErrMessage(errorCode+"--"+errorMessage);
-
-  });
-
-    }
-    
+        const user = userCredential.user;
+        
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrMessage(errorCode+"--"+errorMessage);
+      });
+    } 
   }
 
   const toggleSignInForm = () => {
