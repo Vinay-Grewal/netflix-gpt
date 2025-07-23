@@ -5,6 +5,7 @@ import { auth } from '../utils/firebase'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser, removeUser } from '../utils/userSlice'
+import { clearMovies } from '../utils/movieSlice'
 import Disclaimer from './Disclaimer'
 
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
   
   const handleSignOut=()=>{
     signOut(auth).then(() => {
-      
+      dispatch(clearMovies());
 }).catch((error) => {
   // An error happened.
   navigate("/error");
@@ -35,6 +36,7 @@ const Header = () => {
       } else {
     //anthing to do when signout
         dispatch(removeUser());
+        
         navigate("/");
       }
     });
