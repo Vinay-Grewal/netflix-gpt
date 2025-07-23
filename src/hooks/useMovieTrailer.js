@@ -19,9 +19,7 @@ const useMovieTrailer=(movieId)=>{
     
     setTrailerId(trailer.key);
   }
-  // useEffect(()=>{
-  //   getMovieVideos();
-  // },[]);
+ 
   useEffect(() => {
   if (movieId) getMovieVideos();
 }, [movieId]);
