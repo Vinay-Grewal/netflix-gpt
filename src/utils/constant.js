@@ -5,6 +5,7 @@ export const NETFLIX_LOGO_URL="https://help.nflxext.com/helpcenter/OneTrust/oneT
 export const USER_ICON="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg";
 export const USER_PROFILE_PHOTO="https://avatars.githubusercontent.com/u/186838763?v=4";
 export const PLAY_ICON="https://icon-library.com/images/play-button-icon-vector/play-button-icon-vector-4.jpg";
+export const MOVIE_CARD_IMAGE_URL="https://image.tmdb.org/t/p/w500";
 
 
 
