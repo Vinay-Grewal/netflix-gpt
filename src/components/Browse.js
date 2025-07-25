@@ -9,8 +9,11 @@ import SecondaryContainer from './SecondaryContainer';
 import { useEffect } from 'react';
 import { setFeaturedMovie } from '../utils/movieSlice';
 
+import GptSearchPage from './GptSearchPage';
+
 const Browse = () => {
   const dispatch=useDispatch();
+  const showGptSearch=useSelector(store=>store.gpt.showGptSearch);
  useNowPlayingMovies();
  usePopularMovies();
  useTopRatedMovies();
@@ -28,8 +31,11 @@ const Browse = () => {
   return (
     <div className=''>
       <Header/>
+      {showGptSearch?<GptSearchPage/>:<>
       {featuredmovie===null?null:<MainContainer movie={featuredmovie}/>}
       <SecondaryContainer/>
+      </>}
+      
     </div>
   )
 }

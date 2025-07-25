@@ -21,6 +21,9 @@
 - Register TMDB API and cretate an app and get accesst o token
 - get the data from TMDB now playing movies list API
 - Embedded Youtube Video and made it autoplay and mute
+- GPT Search feature
+- Multi-language Feature integrated!
+- Integrate GPT APIs(get openAI key)
 
 
 # Features:
