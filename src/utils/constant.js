@@ -13,8 +13,12 @@ export const API_OPTIONS = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MjI5YmNjYjBkYTliOWNiNmUzZWU0NzVkNDgzMmI4MSIsIm5iZiI6MTc1Mjk5NzE5OC4zNDIwMDAyLCJzdWIiOiI2ODdjOWQ0ZTkzZDA2OWUzYmQ3MmM2MjYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.bbADs1p27CvHJN8oVS2a6PmRd-cfbfyvUPueaPjRtCk'
+    Authorization: 'Bearer'+process.env.REACT_APP_TMDB_KEY,
   }
 };
 
 export const SUPPORTED_LANGUAGES=[{identifier:"en" ,name:"English"},{identifier:"hindi" ,name:"Hindi"}];
+
+export const GEMINI_KEY=process.env.REACT_APP_GEMINI_KEY;
+
+export const GEMINI_KEY2=process.env.REACT_APP_GEMINI_KEY2;

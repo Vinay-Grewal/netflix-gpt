@@ -8,16 +8,24 @@ const useMovieTrailer=(movieId)=>{
     const getMovieVideos=async()=>{
     const data=await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`, API_OPTIONS);  
     const json=await data.json();
-    
     let filterData=json.results.filter((video)=>(video.type==='Trailer'));
-    
-    
-    if(filterData===null || filterData.length===0){
-      filterData=json.results[0];
+ 
+    let flag=0
+    if(filterData==null || filterData.length===0){
+      flag=1;
+      filterData.push(json.results[0]);
     }
-    const trailer=filterData[0];
+
+    if(flag==0){
+      const trailer=filterData[0];
+      setTrailerId(trailer.key);
+    }else{
+      const trailerkey=filterData.key;
+      setTrailerId(trailerkey);
+    }
     
-    setTrailerId(trailer.key);
+    
+    
   }
  
   useEffect(() => {

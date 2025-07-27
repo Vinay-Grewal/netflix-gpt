@@ -8,9 +8,9 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { clearMovies } from "../utils/movieSlice";
+import { clearGptSuggestedMovies, clearMovies } from "../utils/movieSlice";
 import Disclaimer from "./Disclaimer";
-import { toggleGptSearchView } from "../utils/gptSlice";
+import { resetGptSearchView, toggleGptSearchView } from "../utils/gptSlice";
 import { modifyLanguage } from "../utils/appConfigSlice";
 
 const Header = () => {
@@ -25,6 +25,8 @@ const Header = () => {
     signOut(auth)
       .then(() => {
         dispatch(clearMovies());
+        dispatch(modifyLanguage("en"));
+        dispatch(resetGptSearchView());
       })
       .catch((error) => {
         // An error happened.
@@ -55,6 +57,7 @@ const Header = () => {
   }, []);
 
   const handleGptSearchClick = () => {
+    dispatch(clearGptSuggestedMovies());
     dispatch(toggleGptSearchView());
   };
   const handleLanguageChange = (e) => {

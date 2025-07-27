@@ -8,7 +8,7 @@ const MainContainer = (props) => {
     
   return (
     <div className=''>
-        <VideoTitle title={mainMovie.original_title} overview={mainMovie.overview}/>
+        <VideoTitle title={mainMovie.title} overview={mainMovie.overview}/>
         <VideoBackground id={mainMovie.id}/>
     </div>
   )

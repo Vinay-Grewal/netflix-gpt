@@ -23,7 +23,9 @@
 - Embedded Youtube Video and made it autoplay and mute
 - GPT Search feature
 - Multi-language Feature integrated!
-- Integrate GPT APIs(get openAI key)
+- Integrate GEMINI APIs(get openAI key)
+- Search movies using gpt
+- .ENV for securing api keys
 
 
 # Features:
