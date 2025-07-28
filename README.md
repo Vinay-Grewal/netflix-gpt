@@ -26,6 +26,7 @@
 - Integrate GEMINI APIs(get openAI key)
 - Search movies using gpt
 - .ENV for securing api keys
+- Reused movies list componen to make movie search suggestions
 
 
 # Features:
